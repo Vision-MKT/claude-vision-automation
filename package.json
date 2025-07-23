@@ -1,0 +1,72 @@
+{
+  "name": "claude-vision-automation",
+  "version": "1.0.0",
+  "description": "Sistema de automação integrado entre GitHub e Firebase para deploy contínuo",
+  "main": "src/automation.js",
+  "scripts": {
+    "start": "node src/automation.js",
+    "dev": "nodemon src/automation.js",
+    "build": "npm run build:public && npm run build:functions",
+    "build:public": "mkdir -p public && cp -r src/public/* public/ 2>/dev/null || true",
+    "build:functions": "cd functions && npm run build",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "deploy": "firebase deploy",
+    "deploy:hosting": "firebase deploy --only hosting",
+    "deploy:functions": "firebase deploy --only functions",
+    "deploy:firestore": "firebase deploy --only firestore",
+    "serve": "firebase serve",
+    "emulators": "firebase emulators:start",
+    "sync:github": "node scripts/sync-github.js",
+    "setup:webhook": "node scripts/setup-webhook.js",
+    "monitor": "node scripts/monitor.js",
+    "rollback": "node scripts/rollback.js",
+    "status": "node scripts/status.js",
+    "logs": "firebase functions:log",
+    "clean": "rm -rf public functions/lib node_modules/.cache",
+    "reinstall": "npm run clean && npm install"
+  },
+  "keywords": [
+    "firebase",
+    "github",
+    "automation",
+    "ci/cd",
+    "webhook",
+    "deployment"
+  ],
+  "author": "Vision Growth Marketing",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "firebase-admin": "^12.0.0",
+    "firebase-functions": "^4.6.0",
+    "node-fetch": "^3.3.2",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0",
+    "axios": "^1.6.5",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "firebase-tools": "^13.0.2",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vision-MKT/claude-vision-automation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Vision-MKT/claude-vision-automation/issues"
+  },
+  "homepage": "https://github.com/Vision-MKT/claude-vision-automation#readme"
+}
