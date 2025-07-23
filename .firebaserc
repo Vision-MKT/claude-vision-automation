@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "seu-projeto-firebase-id"
+  },
+  "targets": {
+    "seu-projeto-firebase-id": {
+      "hosting": {
+        "production": [
+          "seu-projeto-firebase-id"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
